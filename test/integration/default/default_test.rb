@@ -5,14 +5,16 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
-  end
+describe package('python') do
+  it { should be_installed }
+  its('version') { should eq '2.7.12-1~16.04' }
 end
 
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+describe package('python-pip') do
+  it { should be_installed }
+  its('version') { should cmp >= '8' }
+end
+
+describe package("libncurses5-dev") do
+  it { should be_installed }
 end
