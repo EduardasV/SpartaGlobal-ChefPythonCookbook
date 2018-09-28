@@ -34,5 +34,9 @@ describe 'python::default' do
     it "should install libncurses5" do
       expect(chef_run).to install_package("libncurses5-dev")
     end
+
+    it "should install libncursesw5" do
+      expect(chef_run).to install_package("libncursesw5-dev")
+    end
   end
 end
